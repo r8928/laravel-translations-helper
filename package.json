@@ -1,0 +1,12 @@
+{
+  "name": "copy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "php -S localhost:3"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
