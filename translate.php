@@ -13,10 +13,15 @@ if ($string) {
 
     $slugged = (string) Str::of($tr)->lower()->kebab();
 
-    $out = "'{$slugged}' => '{$string}',
-'{$slugged}' => '{$tr}',";
+    $translation = "'{$slugged}' => '{$string}',
+'{$slugged}' => '{$tr}',";;
 
-    echo $out;
+    $surround_with = trim(urldecode($_GET['surround_with'] ?? ''));
+    if ($surround_with) {
+        $surround_with = "{{__('" . $surround_with . $slugged . "')}}";
+    }
+
+    echo json_encode(compact('translation', 'surround_with'));
 }
 
 echo '';

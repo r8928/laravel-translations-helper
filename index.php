@@ -1,5 +1,7 @@
 <h1>&nbsp;</h1>
 
+<p class="surround_with" style="background-color: yellow;width: 500px; "></p>
+
 <p>{{__('admin::app.')}}</p>
 
 <p>{{__('admin::app.customers.')}}</p>
@@ -9,6 +11,9 @@
 <p>{{__('admin::app.settings.store-design.')}}</p>
 
 <p>[\u0621-\u064A]+</p>
+
+<input type="text" id="surround_with">
+<br />
 
 <button type="button" onclick="translatee()">translate</button>
 
