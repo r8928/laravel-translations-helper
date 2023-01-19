@@ -26,10 +26,13 @@ $("#surround_with").on("change", function () {
 });
 
 function translatee() {
+  const sourcelang =
+    document.querySelector("[name=source]:checked").value || "ar";
+  console.log(`🚀 > translatee > sourcelang`, sourcelang);
   const surround_with = document.getElementById("surround_with").value;
   getCB().then((string) => {
     fetch(
-      `translate.php?string=${encodeURIComponent(
+      `translate.php?sourcelang=${sourcelang}&string=${encodeURIComponent(
         string
       )}&surround_with=${surround_with}`
     )

@@ -12,6 +12,9 @@
 
 <p>[\u0621-\u064A]+</p>
 
+<div><label><input type="radio" name="source" value="ar" checked>From Arabic</label></div>
+<div><label><input type="radio" name="source" value="en">From English</label></div>
+
 <input type="text" id="surround_with">
 <br />
 

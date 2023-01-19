@@ -8,10 +8,15 @@ use Illuminate\Support\Str;
 
 $string = trim(urldecode($_GET['string'] ?? ''));
 
-if ($string) {
-    $tr = GoogleTranslate::trans($string, 'en');
+$sourcelang = trim(urldecode($_GET['sourcelang'] ?? 'ar'));
+$targetlang = $sourcelang === 'ar' ? 'en' : 'ar';
 
-    $slugged = (string) Str::of($tr)->lower()->kebab();
+if ($string) {
+    $tr = GoogleTranslate::trans($string, $targetlang, $sourcelang);
+
+    $slugged = $sourcelang === 'ar' ? $tr : $string;
+
+    $slugged = (string) Str::of($slugged)->lower()->kebab();
 
     $translation = "'{$slugged}' => '{$string}',
 '{$slugged}' => '{$tr}',";;
@@ -21,7 +26,7 @@ if ($string) {
         $surround_with = "{{__('" . $surround_with . $slugged . "')}}";
     }
 
-    echo json_encode(compact('translation', 'surround_with'));
+    echo json_encode(compact('translation', 'surround_with', 'sourcelang', 'targetlang', 'slugged'));
 }
 
 echo '';
